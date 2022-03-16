@@ -8,7 +8,7 @@ services:
     restart: always
     environment:
       MONGO_INITDB_ROOT_USERNAME: smiller
-      MONGO_INITDB_ROOT_PASSWORD: A14worldpeace
+      MONGO_INITDB_ROOT_PASSWORD: jvm.password
       MONGO_INITDB_DATABASE: crypto-data-store
     ports:
       - 3030:3030

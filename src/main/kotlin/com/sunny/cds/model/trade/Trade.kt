@@ -4,6 +4,8 @@ import com.sunny.cds.model.BaseMarketData
 import org.springframework.data.annotation.Id
 import org.springframework.data.mongodb.core.mapping.Document
 
+//TODO finish this for order book state maintenance algorithm
+
 @Document
 data class Trade (
     @Id

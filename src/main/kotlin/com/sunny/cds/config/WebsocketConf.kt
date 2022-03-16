@@ -2,13 +2,12 @@ package com.sunny.cds.config
 
 import com.fasterxml.jackson.databind.ObjectMapper
 import com.google.gson.Gson
-import com.sunny.cds.client.DatabasePublisher
 import com.sunny.cds.client.MarketDataHandler
 import com.sunny.cds.model.book.*
+import com.sunny.cds.repository.BookPublisher
 import org.springframework.beans.factory.annotation.Value
 import org.springframework.context.annotation.Bean
 import org.springframework.context.annotation.Configuration
-import org.springframework.stereotype.Service
 import org.springframework.web.reactive.socket.client.ReactorNettyWebSocketClient
 import reactor.core.publisher.Mono
 import reactor.netty.http.client.HttpClient
@@ -65,6 +64,7 @@ class WebsocketConf(
                 )
             )
         )
+        //TODO autowire configured Gson
         val g = Gson()
         return client().execute(
             URI(geminiStream), MarketDataHandler(
@@ -80,6 +80,4 @@ class WebsocketConf(
     }
 }
 
-@Service
-class BookPublisher: DatabasePublisher<Book>()
 
