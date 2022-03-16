@@ -1,0 +1,31 @@
+version: '3.7'
+
+services:
+  mongodb:
+    command: mongod --port 3030
+    image: mongo:latest
+    container_name: ss-dev-mongo
+    restart: always
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: smiller
+      MONGO_INITDB_ROOT_PASSWORD: A14worldpeace
+      MONGO_INITDB_DATABASE: crypto-data-store
+    ports:
+      - 3030:3030
+    volumes:
+      - ./mongo-init.js:/docker-entrypoint-initdb.d/mongo-init.js:ro
+  gradle:
+    container_name: ss-dev-cds
+    image: gradle
+#    restart: always
+    ports:
+      - "3022:3022"
+    volumes:
+        - /Users/sam/workspace/crypto-data-store:/home
+
+#    command:
+#      - cd ./cdsbuild && gradle runBoot -Dspring.profiles.active=dev -Dserver.port=3030
+
+
+volumes:
+  cdsbuild:
