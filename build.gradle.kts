@@ -29,6 +29,8 @@ dependencies {
 	implementation("org.springframework.boot:spring-boot-starter-data-mongodb-reactive")
 	implementation("org.springframework.boot:spring-boot-starter-quartz")
 	implementation("org.springframework.boot:spring-boot-starter-webflux")
+//	implementation("com.graphql-java-kickstart:graphql-spring-boot-starter:12.0.0")
+//	implementation("com.graphql-java:graphql-java:18.0")
 	implementation("org.springframework.boot:spring-boot-starter-aop")
 	implementation("com.fasterxml.jackson.core:jackson-core")
 	implementation ("com.fasterxml.jackson.core:jackson-annotations")
@@ -47,7 +49,7 @@ dependencies {
 	implementation("org.apache.commons:commons-lang3:3.12.0")
 	implementation("org.twitter4j:twitter4j-core:4.0.7")
 	runtimeOnly("io.netty:netty-resolver-dns-native-macos:4.1.74.Final:osx-aarch_64")
-	implementation("com.fasterxml.jackson.module:jackson-module-kotlin:2.8.0")
+	implementation("com.fasterxml.jackson.module:jackson-module-kotlin:2.13.2")
 	implementation("com.google.code.gson:gson:2.9.0")
 //	implementation("io.ktor:ktor-client-core:1.3.2-1.4-M2")
 //	implementation("io.ktor:ktor-client-ios:1.3.2-1.4-M2")
@@ -70,3 +72,17 @@ tasks.withType<BootBuildImage> {
 //	environment = mapOf("BP_NATIVE_IMAGE" to "true")
 }
 
+
+//create a single Jar with all dependencies
+tasks.create("BuildCryptoDataStore", Jar::class) {
+	group = "build" // OR, for example, "build"
+	description = "Fat CDS jar."
+	manifest.attributes["Main-Class"] = "com.sunny.cds.CryptoDataStoreApplication"
+	duplicatesStrategy = DuplicatesStrategy.EXCLUDE
+	val dependencies = configurations
+		.runtimeClasspath
+		.get()
+		.map(::zipTree)
+	from(dependencies)
+	with(tasks.jar.get())
+}

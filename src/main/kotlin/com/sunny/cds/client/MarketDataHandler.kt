@@ -27,7 +27,7 @@ class DatabasePublisher<U: BaseMarketData> {
 class MarketDataHandler<T: BaseMarketData> (
     val clazz: KClass<T>,
     val deserializer: (json: String) -> List<T>,
-    val databasePublisher: DatabasePublisher<T>,
+    private val databasePublisher: DatabasePublisher<T>,
     val subscriptionMessage: Map<String, Any>
 ) : WebSocketHandler {
 
@@ -40,6 +40,7 @@ class MarketDataHandler<T: BaseMarketData> (
 
         return session.receive().map {
             log.debug(it.payloadAsText)
+            println(it.payloadAsText)
             deserializer(it.payloadAsText)
             }.flatMap {
                 databasePublisher.publishAll(it, clazz)

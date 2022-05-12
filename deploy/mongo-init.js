@@ -1,9 +1,7 @@
-const p = "TODO code to grab jvm password as runtime arg"
-
 db.createUser(
     {
-        user: "smiller",
-        pwd: p,
+        user: "cyber",
+        pwd: "ur_mums_security",
         roles: [
             {
                 role: "readWrite",

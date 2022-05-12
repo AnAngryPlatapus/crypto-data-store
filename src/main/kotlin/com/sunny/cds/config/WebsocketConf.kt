@@ -1,6 +1,5 @@
 package com.sunny.cds.config
 
-import com.fasterxml.jackson.databind.ObjectMapper
 import com.google.gson.Gson
 import com.sunny.cds.client.MarketDataHandler
 import com.sunny.cds.model.book.*
@@ -20,8 +19,10 @@ class WebsocketConf(
     private val bitfinexStream: String,
     @Value("\${gemini.stream.hostname}")
     private val geminiStream: String,
+    @Value("\${gemini.stream.btc.hostname}")
+    private val geminiBtcStream: String,
     private val bookPublisher: BookPublisher,
-    private val objectMapper: ObjectMapper
+    private val g: Gson,
 ) {
 
     private fun client(): ReactorNettyWebSocketClient {
@@ -45,7 +46,7 @@ class WebsocketConf(
                 URI(bitfinexStream), MarketDataHandler(
                     Book::class,
                     {
-                        Bitfinex(this.objectMapper.readValue(it, BitfinexWrapper::class.java), "BTCUSD").toData()
+                        Bitfinex(g.fromJson(it, BitfinexWrapper::class.java), "BTCUSD").toData()
                     },
                     bookPublisher,
                     subBitBook
