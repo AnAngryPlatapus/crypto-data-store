@@ -10,7 +10,7 @@ Its real-time crypto data, streamed right into a brain of your choosing.
 
 ## Architecture
 
-Dependency management and kotlin compiler is handled by gradle "*.gralde.kts"
+Dependency management and kotlin compiler are handled by gradle "*.gralde.kts"
 
 Spring Boot is used for: 
   async realtime processing (Flux and Mono interfaces)
