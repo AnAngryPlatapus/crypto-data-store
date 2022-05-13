@@ -34,11 +34,13 @@ refactor your your shitty code
 
 In Relative Order of Task Priority
 ===================================
-finish Linear model baseline
-finish Neural model baseline
-add K-fold cross validation to test baseline
-add scheduled test result publishing at intervals
-create public dashboard for scheduled notebook run outputs
+1. finish Linear model baseline
+2. finish Neural model baseline
+3. add K-fold cross validation to test baseline
+4. add scheduled test result publishing at intervals
+5. create public dashboard for scheduled notebook run outputs
+
+Notebook models will stay private unless you offer to help with infrastructure
 
 add realtime system health to dashboard
 fix Docker websocket issue
