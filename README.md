@@ -40,8 +40,9 @@ In Relative Order of Task Priority
 4. add scheduled test result publishing at intervals
 5. create public dashboard for scheduled notebook run outputs
 
-Notebook models will stay private unless you offer to help with infrastructure
+--Less Important
+1. add realtime system health to dashboard
+2. fix Docker websocket issue
+3. automate entire CI/CD pipeline 
 
-add realtime system health to dashboard
-fix Docker websocket issue
-Automate entire CI/CD pipeline 
+Notebook models will stay private unless you offer to help with infrastructure
