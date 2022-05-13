@@ -40,7 +40,7 @@ In Relative Order of Task Priority
 4. add scheduled test result publishing at intervals
 5. create public dashboard for scheduled notebook run outputs
 
---Less Important
+-- Less Important --
 1. add realtime system health to dashboard
 2. fix Docker websocket issue
 3. automate entire CI/CD pipeline 
