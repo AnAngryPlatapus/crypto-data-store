@@ -1,5 +1,8 @@
 # crypto-data-store
 
+
+#### Follow Latest Build Updates at: https://twitter.com/TheMarcyMuppet 
+
 ## Project setup
 Okay tom, this is kotlin jvm project, its not rocket science.  It's just like java except the syntax doesn't make me want to kill myself.  
 
@@ -18,18 +21,25 @@ But your a cheap bastard, so just add java to your path, download gradle and add
 
 ### Compiles and minifies for production
 
-I want to add two steps at the end of the gradle build one to commit to the remote dev branch, the other to deploy to docker.  
-If the docker deploy step fails, the commit should be rolled back from remote.  My garbage mishmash of docker scripts are in the deploy folder.  
-
 You need to run the docker script to setup dev mongodb in order the run this app, an example jar run args are like this:
 
 -Dspring.profiles.active=dev
 -Djvm.password=Sunny Side Technologies: ${jvm.password}
 
+There is now a docker file! But the container will randomly close the Gemini socket connection (auto reconnect given kafka topic health?)
+
 ### Lints and fixes files
 
-First fix deploy script
-Second refactor your your shitty code
-Add Trade data models/deserializers/publisers/listeners/jobs
-Add nightly gradle cache clean script for workspace maintentence
-Draft up Orderbook state maintence algorithm test and performance metrics (1st test in CI/CD pipeline)
+refactor your your shitty code
+
+In Relative Order of Task Priority
+===================================
+finish Linear model baseline
+finish Neural model baseline
+add K-fold cross validation to test baseline
+add scheduled test result publishing at intervals
+create public dashboard for scheduled notebook run outputs
+
+add realtime system health to dashboard
+fix Docker websocket issue
+Automate entire CI/CD pipeline 
