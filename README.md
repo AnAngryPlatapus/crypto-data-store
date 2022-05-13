@@ -20,10 +20,10 @@ Spring Boot is used for:
 Backend Mongo Models are defined in kotlin data classes.
 
 Quartz jobs for websocket connections are spun up on startup, the current logic isn't working.  
-  1. The connections sometimes close and we should re-subscribe. 
-  2. Also need to find out the root cause of the connection being closed
+  * The connections sometimes close and we should re-subscribe. 
+  * Also need to find out the root cause of the connection being closed
 
-  requirements for a better job manager: 
+  # Requirements for a better job manager: 
     * needs handy methods for gathering job metadata 
     * should have an out of the box extendable ui for seeing status
  
