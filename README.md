@@ -24,14 +24,14 @@ Quartz jobs for websocket connections are spun up on startup, the current logic 
   2. Also need to find out the root cause of the connection being closed
 
   requirements for a better job manager: 
-    --needs handy methods for gathering job metadata 
-    --should have an out of the box extendable ui for seeing status
+    * needs handy methods for gathering job metadata 
+    * should have an out of the box extendable ui for seeing status
  
  Docker manages the environments. Some scripts for the engine and databases are in the project. CI/CD is incomplete. 
-  -need to bootstrap a new environment on port and remove existing with a single command
-  -before uat is deployed in a hosted fashion the following modules need to be complete
-    --front end webapp container, displays all relavent statistics in realtime, should probably bootstrap off of an existing job monitoring solution
-      (kafka or spark ui maybe, open source, written in vue is preferable)
+  * need to bootstrap a new environment on port and remove existing with a single command
+  * before uat is deployed in a hosted fashion the following modules need to be complete
+    * front end webapp container, displays all relavent statistics in realtime, should probably bootstrap off of an existing job monitoring solution
+        (kafka or spark ui maybe, open source, written in vue is preferable)
   
  private upon request: python notebooks that run predictive models
  
