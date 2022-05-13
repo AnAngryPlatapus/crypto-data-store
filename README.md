@@ -3,10 +3,45 @@
 
 #### Follow Latest Build Updates at: https://twitter.com/TheMarcyMuppet 
 
-## Project setup
+## Welcome
 This is primarily a kotlin jvm project, a beautiful condiut from meaningless data to glorious information. 
-Its not rocket science.  
+Its not rocket science.
+Its real-time crypto data, streamed right into a brain of your choosing. 
 
+## Architecture
+
+Dependency management and kotlin compiler is handled by gradle "*.gralde.kts"
+
+Spring Boot is used for: 
+  async realtime processing (Flux and Mono interfaces)
+  database orm abstractions (ReactiveMongoRepository interface)
+  properties and dependency injection
+
+Backend Mongo Models are defined in kotlin data classes.
+
+Quartz jobs for websocket connections are spun up on startup, the current logic isn't working.  
+  1. The connections sometimes close and we should re-subscribe. 
+  2. Also need to find out the root cause of the connection being closed
+
+  requirements for a better job manager: 
+    --needs handy methods for gathering job metadata 
+    --should have an out of the box extendable ui for seeing status
+ 
+ Docker manages the environments. Some scripts for the engine and databases are in the project. CI/CD is incomplete. 
+  -need to bootstrap a new environment on port and remove existing with a single command
+  -before uat is deployed in a hosted fashion the following modules need to be complete
+    --front end webapp container, displays all relavent statistics in realtime, should probably bootstrap off of an existing job monitoring solution
+      (kafka or spark ui maybe, open source, written in vue is preferable)
+  
+ private upon request: python notebooks that run predictive models
+ 
+ ##TODO: The Rocket Surgery Operating Room
+  1. Be able to customize the reported statistics
+  2. Build liquidity workflows
+  3. Achieve this with a typed DSL and natural lanagauge processing tools
+    -- Early ideas are a an embedded kotlin jupyter notebook with open gpt code generation contexts
+  
+# Skip to dev builds if you have kotlin familiarity
 It's just like java except the syntax is intelligent.  
 
 "val" declared variables are immutable
@@ -16,8 +51,6 @@ Everything is strongly typed, so be concious of the fact that the type needs to 
 You usually only have to specify types for method parameters.  
 Sometimes I specify types anyway to help write something complicated like a wierd object transformation.  
 
-Webflux reactive stream help simply realtime processessing pipelines.  
-Ultimately I want to swap quartz with kafka and try to understand the best way to scale compute instances.   
 
 ### Compiles and hot-reloads for development
 
